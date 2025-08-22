@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minimal Banking UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>My Bank</h1>
+    
+    <div class="balance-box">
+      <span>Balance:</span>
+      <h2 id="balance">₹0.00</h2>
+    </div>
+
+    <div class="buttons">
+      <button onclick="deposit()">Deposit ₹500</button>
+      <button onclick="withdraw()">Withdraw ₹500</button>
+    </div>
+  </div>
+
+  <script>
+    let balance = 0;
+
+    function updateDisplay() {
+      document.getElementById("balance").textContent = `₹${balance.toFixed(2)}`;
+    }
+
+    function deposit() {
+      balance += 500;
+      updateDisplay();
+    }
+
+    function withdraw() {
+      if (balance >= 500) {
+        balance -= 500;
+      } else {
+        alert("Insufficient funds!");
+      }
+      updateDisplay();
+    }
+
+    updateDisplay();
+  </script>
+</body>
+</html>
